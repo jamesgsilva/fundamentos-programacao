@@ -20,6 +20,8 @@ Recomendo o uso do [Portugol WebStudio](https://portugol-webstudio.cubos.io), um
     - [Estrutura de repetição](#estrutura-de-repetição)
 3. [Vetores](#vetores)
 4. [Funções](#funções)
+    - [Parâmetros](#parâmetros)
+    - [Retorno](#retorno)
 
 ## Entrada e saída
 
@@ -139,7 +141,7 @@ Podemos expressar uma condição através da comparação de valores, o resultad
 | :-----:  | :--------:       |
 | >        | Maior que        |
 | <        | Menor que        |
-| =        | Igual a          |
+| ==       | Igual a          |
 | >=       | Maior ou igual a |
 | <=       | Menor ou igual a |
 | <>       | Diferente de     |
@@ -267,3 +269,57 @@ funcao inicio () {
 Acessar um elemento com um índice fora dos limites do vetor causará em erro no programa.
 
 ## Funções
+
+São blocos reutilizáveis de códigos, usados para simplificar a criação de grandes programas, dividindo-os em partes menores ou sub-programas.
+
+Para declarar uma função (protótipo), use a palavra reservada `funcao`, em seguida o tipo de retorno, o identificador da função, e entre parenteses uma lista de parâmetros. A função deve ter um bloco entre chaves definindo o corpo.
+
+```portugol
+funcao real calculeDelta(real a, real b, real c) {
+    retorne (b * b) - (4 * a * c)
+}
+```
+
+A chamada da função se faz com a referência ao identificador da função seguido dos argumentos entre parenteses.
+
+```portugol
+calculeDelta(3.9, 5.7, 8.2)
+```
+
+### Parâmetros
+
+São um conjunto de variáveis utilizadas pela função para receber informações passadas quando ativada. É necessário especificar o tipo de cada parâmetro.
+
+Por exemplo `escreva` é uma função que imprime a informação passada como parâmetro.
+
+```portugol
+escreva("Olá mundo!")
+```
+
+Por padrão parâmetros são cópias dos valores passados como argumentos, portanto a mudança no valor de um parâmetro dentro de uma função não deve afetar o valor do argumento passado.
+
+Quando uma função precisa alterar o valor de um argumento que existe fora da própria função, passamos como argumento a referência de onde a informação está armazenada e não o seu valor. Desta forma, as alterações também são feitas no valor da variável original.
+
+Os parâmetros e as variáveis criadas dentro uma função tem escopo local, ou seja, são visíveis/acessíveis apenas na função da qual eles pertencem, e  deixam de existir quando a função chamada termina.
+
+### Retorno
+
+Muitas vezes é útil que a função comunique algo de volta para o código que a chamou, para isso especificamos o tipo de retorno no protótipo da função e usamos a palavra reservada `retorne` no final do corpo da função.
+
+```portugol
+funcao logico possuiNegativo(real n1, real n2) {
+    se (n1 < 0.0 ou n2 < 0.0)
+        retorne verdadeiro;
+    retorne falso;
+}
+```
+
+Para funções sem nenhum valor de retorno, usamos um tipo de retorno vazio (void), para comunicar a ausência de valores no retorno da função.
+
+```portugol
+funcao vazio imprimirSeparador() {
+    escreva("\n");
+    escreva("=============================================\n");
+    escreva("\n");
+}
+```
